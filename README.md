@@ -1,6 +1,6 @@
 # BGM Event Calendar OpenAPI Definition
 
-Site 주소: *추후 업데이트 예정*
+Site 주소: https://busandevelopers.github.io/BGM-Event-Calendar-API-Documentation/
 
 이 저장소는 OpenAPI 규격에 대응하는 **BGM Event Calendar** API 문서를 만들기 위한 [ReDoc](https://github.com/Redocly/redoc) 리소스를 포함하고 있습니다.
 이 프로젝트는 부산 개발자모임에서 활용될 이벤트 캘린더를 만들기위해 기획되었습니다.
