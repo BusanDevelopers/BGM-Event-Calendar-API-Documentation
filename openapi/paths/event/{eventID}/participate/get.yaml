@@ -33,7 +33,8 @@ responses:
                 type: object
                 properties:
                   id:
-                    type: string
+                    type: number
+                    minimum: 1
                   participantName:
                     type: string
                   phoneNumber:
@@ -60,15 +61,15 @@ responses:
             value:
               numParticipants: 3
               participantsList:
-                - id: HashedTicketID1
+                - id: 1
                   participantName: 홍길동
                   phoneNumber: 01012345678
                   email: gildong.hong@gmail.com
                   comment: 참여 신청합니다!! 예상 도착시간은 10시 입니다.
-                - id: HashedTicketID2
+                - id: 2
                   participantName: 홍길순
                   email: gilsoon123@gmail.com
-                - id: HashedTicketID3
+                - id: 3
                   participantName: 김철수
                   email: charles@korea.kr
   '401':

@@ -23,7 +23,8 @@ parameters:
     description: 기존 이벤트 티켓의 식별자
     required: true
     schema:
-      type: string
+      type: number
+      minimum: 1
 requestBody:
   required: true
   content:
