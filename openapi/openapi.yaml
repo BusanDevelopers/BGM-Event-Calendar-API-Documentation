@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: BGM Event Calendar
+  license:
+    name: BSD-3-Clause
+    url: https://opensource.org/licenses/BSD-3-Clause
+  termsOfService: 'https://calendar.busandev.com/terms/'
+  contact:
+    url: 'https://github.com/BusanDevelopers'
+  x-logo:
+    url: 'https://redocly.github.io/openapi-template/logo.png'
+  description:
+    $ref: description/main.md
+externalDocs:
+  description: GitHub repository for this API Documentation.
+  url: 'https://github.com/BusanDevelopers/BGM-Event-Calendar-API-Documentation'
+tags:
+  - name: 인증
+    description: 인증과 관련된 API
+  - name: 캘린더
+    description: 캘린더 상에 표시될 정보와 관련된 API
+  - name: 이벤트
+    description: 개별 이벤트/행사에 관한 API
+  - name: 참가 신청
+    description: 이벤트의 참여 신청에 관련된 API
+servers:
+  - url: 'https://calendar.busandev.com'
+# paths:

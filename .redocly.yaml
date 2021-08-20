@@ -1,0 +1,26 @@
+# See https://redoc.ly/docs/cli/configuration/ for more information.
+apiDefinitions:
+  main: openapi/openapi.yaml
+lint:
+  extends:
+    - recommended
+  rules:
+    no-unused-components: error
+    info-description: error
+    info-license: error
+    info-license-url: error
+    tag-description: error
+    no-ambiguous-paths: error
+    operation-2xx-response: error
+    operation-operationId: error
+    no-invalid-media-type-examples:
+      severity: error
+      disallowAdditionalProperties: true
+    no-server-example.com: error
+referenceDocs:
+  htmlTemplate: ./template/index.html
+  noAutoAuth: true
+  theme:
+    colors:
+      primary:
+        main: "#32329f"
