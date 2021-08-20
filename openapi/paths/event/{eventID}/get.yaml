@@ -1,0 +1,54 @@
+tags:
+  - 이벤트
+summary: 이벤트 정보 보기
+operationId: getEvent
+description: |
+  이벤트 정보 보기: 이벤트를 지칭하는 eventID가 필요함
+parameters:
+  - name: eventID
+    in: path
+    description: 기존 이벤트의 식별자
+    required: true
+    schema:
+      type: number
+      minimum: 1
+responses:
+  '200':
+    description: 응답 성공
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            year:
+              type: number
+              minimum: 2021
+            month:
+              type: number
+              minimum: 1
+              maximum: 12
+            date:
+              type: number
+              minimum: 1
+              maximum: 31
+            name:
+              type: string
+            detail:
+              type: string
+            group:
+              type: string
+          required:
+            - year
+            - month
+            - date
+            - name
+          additionalProperties: false
+          example:
+            year: 2021
+            month: 11
+            date: 01
+            name: 조금 늦은 할로윈 파티
+            detail: 기존에 계획된 10월 31일 할로윈 파티를 하루 미루어서 진행합니다!!
+            group: 네트워킹
+  '404':
+    description: 이벤트 식별자를 찾을수 없음

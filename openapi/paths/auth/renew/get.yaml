@@ -1,0 +1,29 @@
+tags:
+  - 인증
+summary: 토큰 갱신
+operationId: renewToken
+description: | 
+  리프래시 토큰을 이용하여 엑세스 토큰을 재발급함.
+  만약 리프래시 토큰이 만료 직전이면 (만료 15분 전) 리프래시 토큰의 재발급도 함께 진행.
+  
+  관리자 전용
+security:
+  - refreshToken: []
+responses:
+  '200':
+    description: 토큰 갱신 성공
+    headers:
+      Set-Cookie:
+        description: "엑세스 토큰"
+        schema:
+          type: string
+          readOnly: true
+          example: "X-ACCESS-TOKEN=abcdef1234; Domain=api.bshs.or.kr; Path=/; Secure; HttpOnly; SameSite=Strict; Expires=<Expire Date>"
+      "\0Set-Cookie":
+        description: "리프래시 토큰 (Optional)"
+        schema:
+          type: string
+          readOnly: true
+          example: "X-REFRESH-TOKEN=abcdef1234; Domain=api.bshs.or.kr; Path=/auth; Secure; HttpOnly; SameSite=Strict; Expires=<Expire Date>"
+  '401':
+    description: 인증 오류

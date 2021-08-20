@@ -1,0 +1,83 @@
+tags:
+  - 캘린더
+summary: 달 별 이벤트 목록 불러오기
+operationId: getEventListOfMonth
+description: |
+  주어진 년도와 달의 이벤트 개수와 목록을 불러옴.
+  2021년 1월 이후의 달만 지원
+
+  만약, 주어진 달에 이벤트가 없는 경우, 이벤트가 없다는 명시적인 응답이 주어짐
+parameters:
+  - name: year
+    in: path
+    description: 주어진 달의 년도를 나타냄
+    required: true
+    schema:
+      type: number
+      minimum: 2021
+  - name: month
+    in: path
+    description: 주어진 달을 나타냄
+    required: true
+    schema:
+      type: number
+      minimum: 1
+      maximum: 12
+responses:
+  '200':
+    description: 응답 성공
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            numEvent:
+              type: number
+              minimum: 0
+            eventList:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    minimum: 1
+                  name:
+                    type: string
+                  date:
+                    type: number
+                    minimum: 1
+                    maximum: 31
+                  group:
+                    type: string
+                required:
+                  - id
+                  - name
+                  - date
+                additionalProperties: false
+          required:
+            - numEvent
+          additionalProperties: false
+        examples:
+          이벤트 없음:
+            summary: 이벤트 없음
+            value:
+              numEvent: 0
+          이벤트 있음:
+            summary: 이벤트 있음
+            value:
+              numEvent: 3
+              eventList:
+                - id: 1
+                  name: 디스코드 비대면 모각코
+                  date: 20
+                - id: 2
+                  name: 서면 스타벅스 정기 모임
+                  date: 24
+                  group: 정기모임
+                - id: 3
+                  name: "mm 정기모임 - 당신이 사랑하는 프로그래밍 언어는?"
+                  date: 30
+                  group: 비대면
+  '400':
+    description: 잘못된 요청 (Bad Request)

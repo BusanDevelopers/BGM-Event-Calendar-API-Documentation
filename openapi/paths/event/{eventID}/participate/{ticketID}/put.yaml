@@ -1,0 +1,53 @@
+tags:
+  - 참가 신청
+summary: 이벤트 참가 신청 수정
+operationId: editEventTicket
+description: |
+  이벤트 참가 신청 수정: 특정 이벤트의 참여자, 연락처, 추가 의견의 수정 가능
+
+  이벤트와 이벤트티켓의 식별자가 필요함
+
+  관리자 전용
+security:
+  - accessToken: []
+parameters:
+  - name: eventID
+    in: path
+    description: 기존 이벤트의 식별자
+    required: true
+    schema:
+      type: number
+      minimum: 1
+  - name: ticketID
+    in: path
+    description: 기존 이벤트 티켓의 식별자
+    required: true
+    schema:
+      type: string
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema: 
+        type: object
+        properties:
+          participantName:
+            type: string
+          phoneNumber:
+            type: string
+          email:
+            type: string
+          comment:
+            type: string
+        additionalProperties: false
+        example:
+          phoneNumber: '01077777777'
+responses:
+  '200':
+    description: 참여 신청 수정 완료
+  '400':
+    description: 잘못된 요청 (Bad Request)
+  '401':
+    description: 인증 오류
+  '404':
+    description: 이벤트 식별자 및 이벤트 티켓 식별자를 찾을수 없음

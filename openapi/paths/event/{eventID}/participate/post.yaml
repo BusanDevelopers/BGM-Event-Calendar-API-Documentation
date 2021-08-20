@@ -1,0 +1,50 @@
+tags:
+  - 참가 신청
+summary: 이벤트 참가 신청
+operationId: addEventTicket
+description: |
+  새로운 이벤트 참가 신청: 참가자 이름, 연락처 (전화번호 및 이메일) 입력.
+  추가 의견은 선택적으로 입력
+
+  만약 다음 정보의 쌍이 같은 경우, 중복된 참여 요청으로 간주하여 잘못된 요청 (Bad Request)를 반환함
+    - 이름 + 전화번호
+    - 이름 + 이메일
+parameters:
+  - name: eventID
+    in: path
+    description: 기존 이벤트의 식별자
+    required: true
+    schema:
+      type: number
+      minimum: 1
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema: 
+        type: object
+        properties:
+          participantName:
+            type: string
+          phoneNumber:
+            type: string
+          email:
+            type: string
+          comment:
+            type: string
+        required:
+          - participantName
+          - email
+        additionalProperties: false
+        example:
+          participantName: 홍길동
+          phoneNumber: 01012345678
+          email: gildong.hong@gmail.com
+          comment: 참여 신청합니다!! 예상 도착시간은 10시 입니다.
+responses:
+  '200':
+    description: 참여 신청 완료
+  '400':
+    description: 잘못된 요청 (Bad Request)
+  '404':
+    description: 이벤트 식별자를 찾을수 없음

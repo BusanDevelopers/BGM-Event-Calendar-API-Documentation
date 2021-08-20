@@ -1,0 +1,25 @@
+tags:
+  - 이벤트
+summary: 이벤트 삭제
+operationId: deleteEvent
+description: |
+  기존 이벤트 삭제: 기존 이벤트를 지칭하는 eventID가 필요함
+
+  관리자 전용
+security:
+  - accessToken: []
+parameters:
+  - name: eventID
+    in: path
+    description: 기존 이벤트의 식별자
+    required: true
+    schema:
+      type: number
+      minimum: 1
+responses:
+  '200':
+    description: 이벤트 삭제 성공
+  '401':
+    description: 인증 오류
+  '404':
+    description: 이벤트 식별자를 찾을수 없음

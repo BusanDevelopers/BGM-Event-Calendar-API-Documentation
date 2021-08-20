@@ -1,0 +1,77 @@
+tags:
+  - 참가 신청
+summary: 이벤트 참가 신청 목록 보기
+operationId: listEventTicket
+description: |
+  이벤트 참가 신청 목록 확인: 특정 이벤트의 참여자, 연락처, 추가 의견을 모두 반환
+
+  관리자 전용
+security:
+  - accessToken: []
+parameters:
+  - name: eventID
+    in: path
+    description: 기존 이벤트의 식별자
+    required: true
+    schema:
+      type: number
+      minimum: 1
+responses:
+  '200':
+    description: 응답 성공
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            numParticipants:
+              type: number
+              minimum: 0
+            participantsList:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  participantName:
+                    type: string
+                  phoneNumber:
+                    type: string
+                  email:
+                    type: string
+                  comment:
+                    type: string
+                required:
+                  - id
+                  - participantName
+                  - email
+                additionalProperties: false
+          required:
+            - numParticipants
+          additionalProperties: false
+        examples:
+          참여자 없음:
+            summary: 참여자 없음
+            value:
+              numParticipants: 0
+          참여자 있음:
+            summary: 참여자 있음
+            value:
+              numParticipants: 3
+              participantsList:
+                - id: HashedTicketID1
+                  participantName: 홍길동
+                  phoneNumber: 01012345678
+                  email: gildong.hong@gmail.com
+                  comment: 참여 신청합니다!! 예상 도착시간은 10시 입니다.
+                - id: HashedTicketID2
+                  participantName: 홍길순
+                  email: gilsoon123@gmail.com
+                - id: HashedTicketID3
+                  participantName: 김철수
+                  email: charles@korea.kr
+  '401':
+    description: 인증 오류
+  '404':
+    description: 이벤트 식별자를 찾을수 없음

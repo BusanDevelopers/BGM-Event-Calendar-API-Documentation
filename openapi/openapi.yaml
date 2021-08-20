@@ -25,5 +25,59 @@ tags:
   - name: 참가 신청
     description: 이벤트의 참여 신청에 관련된 API
 servers:
-  - url: 'https://calendar.busandev.com'
-# paths:
+  - url: 'https://api.calendar.busandev.com'
+paths:
+  # Auth APIs
+  /auth/login:
+    post: # 로그인 (로그인 시 다른 세션 전체 로그아웃)
+      $ref: paths/auth/login/post.yaml
+  /auth/logout:
+    delete: # 로그아웃
+      $ref: paths/auth/logout/delete.yaml
+  /auth/renew:
+    get: # 토큰 갱신
+      $ref: paths/auth/renew/get.yaml
+  /auth/password:
+    put: # 비밀번호 변경
+      $ref: paths/auth/password/put.yaml
+  # Calendar APIs
+  /{year}-{month}:
+    get: # 달 별 이벤트 목록 불러오기
+      $ref: paths/{year}-{month}/get.yaml
+  # Event APIs
+  /event:
+    post: # 이벤트 추가
+      $ref: paths/event/post.yaml
+  /event/{eventID}:
+    delete: # 이벤트 삭제
+      $ref: paths/event/{eventID}/delete.yaml
+    put: # 이벤트 수정
+      $ref: paths/event/{eventID}/put.yaml
+    get: # 이벤트 보기
+      $ref: paths/event/{eventID}/get.yaml
+  # Ticket APIs
+  /event/{eventID}/participate:
+    post: # 참가 신청
+      $ref: paths/event/{eventID}/participate/post.yaml
+    get: # 참가 신청 목록 보기
+      $ref: paths/event/{eventID}/participate/get.yaml
+  /event/{eventID}/participate/{ticketID}:
+    put: # 참가 신청 수정
+      $ref: paths/event/{eventID}/participate/{ticketID}/put.yaml
+    delete: # 참가 신청 삭제
+      $ref: paths/event/{eventID}/participate/{ticketID}/delete.yaml
+components:
+  securitySchemes:
+    accessToken:
+      type: apiKey
+      in: cookie
+      name: X-ACCESS-TOKEN
+      description: |
+        Access token will be used to **authenticate/authorize user to use the API**.
+    refreshToken:
+      type: apiKey
+      in: cookie
+      name: X-REFRESH-TOKEN
+      description: |
+        Refresh token will be used to **renew expired access token**.
+        If the refresh token also expired, the user need to login again by using basic authentication.

@@ -1,0 +1,28 @@
+tags:
+  - 인증
+summary: 로그아웃
+operationId: logout
+description: | 
+  기존 세션으로부터 로그아웃
+  
+  관리자 전용
+security:
+  - refreshToken: []
+responses:
+  '200':
+    description: 로그아웃 성공
+    headers:
+      Set-Cookie:
+        description: 엑세스 토큰 삭제
+        schema:
+          type: string
+          readOnly: true
+          example: "X-ACCESS-TOKEN=;"
+      "\0Set-Cookie":
+        description: 리프래시 토큰 삭제
+        schema:
+          type: string
+          readOnly: true
+          example: "X-REFRESH-TOKEN=;"
+  '401':
+    description: 인증 오류
