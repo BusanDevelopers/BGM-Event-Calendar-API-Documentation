@@ -14,7 +14,7 @@
   "scripts": {
     "start": "openapi preview-docs",
     "build-spec": "openapi bundle -o dist",
-    "build-html": "rm -rf docs/* && redoc-cli bundle openapi/openapi.yaml -o docs/index.html -t template/index.html && cp --verbose template/favicon.png docs/favicon.png && cp --verbose template/logo.svg docs/logo.svg",
+    "build-html": "rm -rf docs/* && redoc-cli bundle openapi/openapi.yaml -o docs/index.html -t template/index.html && cp --verbose template/favicon.png docs/favicon.png",
     "test": "openapi lint"
   }
 }
