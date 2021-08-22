@@ -48,7 +48,7 @@ responses:
                     type: number
                     minimum: 1
                     maximum: 31
-                  group:
+                  category:
                     type: string
                 required:
                   - id
@@ -74,10 +74,10 @@ responses:
                 - id: 2
                   name: 서면 스타벅스 정기 모임
                   date: 24
-                  group: 정기모임
+                  category: 정기모임
                 - id: 3
                   name: "mm 정기모임 - 당신이 사랑하는 프로그래밍 언어는?"
                   date: 30
-                  group: 비대면
+                  category: 비대면
   '400':
     description: 잘못된 요청 (Bad Request)

@@ -3,7 +3,7 @@ tags:
 summary: 이벤트 추가
 operationId: addEvent
 description: |
-  새로운 이벤트 추가: 날짜와 제목은 필수정보, 이벤트 그룹 및 세부 사항은 선택적으로 입력 가능
+  새로운 이벤트 추가: 날짜와 제목은 필수정보, 이벤트 카테고리 및 세부 사항은 선택적으로 입력 가능
 
   관리자 전용
 security:
@@ -30,7 +30,7 @@ requestBody:
             type: string
           detail:
             type: string
-          group:
+          category:
             type: string
         required:
           - year
@@ -44,7 +44,7 @@ requestBody:
           date: 31
           name: 할로윈 파티
           detail: 10월 31일에 할로윈 파티를 진행합니다!! 많은 참여 바랍니다!!
-          group: 네트워킹
+          category: 네트워킹
 responses:
   '200':
     description: 이벤트 추가 성공

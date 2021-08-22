@@ -35,7 +35,7 @@ responses:
               type: string
             detail:
               type: string
-            group:
+            category:
               type: string
           required:
             - year
@@ -49,6 +49,6 @@ responses:
             date: 01
             name: 조금 늦은 할로윈 파티
             detail: 기존에 계획된 10월 31일 할로윈 파티를 하루 미루어서 진행합니다!!
-            group: 네트워킹
+            category: 네트워킹
   '404':
     description: 이벤트 식별자를 찾을수 없음

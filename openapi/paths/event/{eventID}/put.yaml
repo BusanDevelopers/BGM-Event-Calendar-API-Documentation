@@ -38,7 +38,7 @@ requestBody:
             type: string
           detail:
             type: string
-          group:
+          category:
             type: string
         additionalProperties: false
         example:
