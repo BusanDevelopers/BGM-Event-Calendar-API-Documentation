@@ -17,7 +17,7 @@ parameters:
       type: number
       minimum: 1
 responses:
-  '200':
+  "200":
     description: 응답 성공
     content:
       application/json:
@@ -63,7 +63,7 @@ responses:
               participantsList:
                 - id: 1
                   participantName: 홍길동
-                  phoneNumber: 01012345678
+                  phoneNumber: "01012345678"
                   email: gildong.hong@gmail.com
                   comment: 참여 신청합니다!! 예상 도착시간은 10시 입니다.
                 - id: 2
@@ -72,7 +72,7 @@ responses:
                 - id: 3
                   participantName: 김철수
                   email: charles@korea.kr
-  '401':
+  "401":
     description: 인증 오류
-  '404':
+  "404":
     description: 이벤트 식별자를 찾을수 없음
